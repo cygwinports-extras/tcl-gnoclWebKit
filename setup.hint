@@ -1,0 +1,8 @@
+category: Gnome Tcl
+requires: libgcc1 libglib2.0_0 libgtk2.0_0 libwebkit1.0_2 tcl tcl-gnocl
+sdesc: "Tcl bindings for the WebKit/GTK+ library"
+ldesc: "gnocl is a GTK+ and Gnome extension for the programming 
+language Tcl. It provides easy to use commands to build quickly GTK+ / 
+Gnome compliant applications including canvas widget, GConf and drag 
+and drop. It consists of several libraries: one for GTK widgets, one 
+for the Gnome canvas widget and one for the GConf database."

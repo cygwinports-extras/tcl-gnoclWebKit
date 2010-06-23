@@ -1,0 +1,24 @@
+ORIG_PN=${PN#tcl-}
+inherit tcl
+
+DESCRIPTION="Tcl bindings for the WebKit/GTK+ library"
+HOMEPAGE="http://www.dr-baum.net/gnocl/"
+SRC_URI="mirror://sourceforge/gnocl/${ORIG_PN}-${PV}.tar.bz2"
+
+DISTCLEANFILES="src/*.o src/*.so"
+DEPS_PATH="/usr/lib/gnocl0.9.95"
+
+src_compile() {
+	lndirs
+	cd ${B}/src
+	cygmake	\
+		CFLAGS="${CFLAGS} -I/usr/include/libsoup-2.4" \
+		GNOCL_VERSION=0.9.95 \
+		LIBS="${LDFLAGS} $(pkg-config --libs webkit-1.0) -lgnocl-\$(GNOCL_VERSION)"
+}
+
+src_install() {
+	cd ${B}/src
+	exeinto /usr/lib/${ORIG_PN}${PV%[a-z]*}
+	doexe *.so pkgIndex.tcl
+}
